@@ -6,7 +6,6 @@ import android.R;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.weibo.dao.login.AccessTokenDao;
@@ -24,10 +23,10 @@ import com.weibo.sdk.android.sso.SsoHandler;
  * @since 2013年8月26日
  */
 public class LoginActivity extends Activity {
+	/**Weibo*/
 	private Weibo mWeibo;
 
-	private TextView mText;
-
+	/**Oauth2AccessToken*/
 	public static Oauth2AccessToken accessToken;
 
 	/**SsoHandler 仅当sdk支持sso时有效，*/
