@@ -39,7 +39,7 @@ public final class AppApplication extends Application {
 	}
 
 	public static void setCanWriteLog(boolean isCanWriteLog) {
-		isCanWriteLog = isCanWriteLog;
+		AppApplication.isCanWriteLog = isCanWriteLog;
 	}
 
 }

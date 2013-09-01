@@ -49,10 +49,10 @@ public final class AppCrashHandler implements UncaughtExceptionHandler {
 	}
 
 	/**
-	 * @param context
+	 * @param ctx
 	 */
-	public void init(Context context) {
-		this.context = context;
+	public void init(Context ctx) {
+		this.context = ctx;
 		threadEx = Thread.getDefaultUncaughtExceptionHandler();
 		Thread.setDefaultUncaughtExceptionHandler(this);
 	}

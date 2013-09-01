@@ -12,6 +12,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Properties;
 
+import android.annotation.SuppressLint;
 import android.os.Environment;
 import android.util.Log;
 
@@ -172,6 +173,7 @@ public final class Logger {
 	 * 获取当前时间
 	 * @return yyyy-MM-dd HH:mm:ss形式当前时间
 	 */
+	@SuppressLint("SimpleDateFormat")
 	public final static String getCurrentTime() {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		return dateFormat.format(System.currentTimeMillis());
