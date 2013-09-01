@@ -14,11 +14,32 @@ import android.app.Application;
  */
 public final class AppApplication extends Application {
 
+	private static Application application;
+	/** 是否能写日志 */
+	private static boolean isCanWriteLog = true;
+
 	@Override
 	public void onCreate() {
 		super.onCreate();
+		application = this;
 		AppCrashHandler handler = AppCrashHandler.getInstance();
 		handler.init(getApplicationContext());
+	}
+
+	/**
+	 * 获取Application对象
+	 * @return
+	 */
+	public static Application getApplication() {
+		return application;
+	}
+
+	public static boolean isCanWriteLog() {
+		return isCanWriteLog;
+	}
+
+	public static void setCanWriteLog(boolean isCanWriteLog) {
+		isCanWriteLog = isCanWriteLog;
 	}
 
 }

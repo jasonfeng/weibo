@@ -59,4 +59,43 @@ public final class SysConfigUtil {
 		return properties.getProperty(propertyName, defaultValue);
 	}
 
+	/**
+	 * 获取服务器URL
+	 * @return
+	 */
+	public static String getHttpServerUrl() {
+		return getProperty("HTTP_SERVER_URL").trim();
+	}
+
+	/**
+	 * 获取HTTP连接超时时间
+	 * @return
+	 */
+	public static int getHttpConnTimeout() {
+		return Integer.valueOf(getProperty("HTTP_CONN_TIMEOUT", "30000").trim());
+	}
+
+	/**
+	 * 获取HTTP最大重发次数
+	 * @return
+	 */
+	public static int getHttpMaxResendCount() {
+		return Integer.valueOf(getProperty("HTTP_RESEND_COUNT", "3").trim());
+	}
+
+	/**
+	 * 获取HTTP接收超时时间
+	 * @return
+	 */
+	public static int getHttpRecvTimeout() {
+		return Integer.valueOf(getProperty("HTTP_RECV_TIMEOUT", "300000").trim());
+	}
+
+	/**
+	 * 获取字符编码
+	 * @return
+	 */
+	public static String getCharset() {
+		return String.valueOf(getProperty("UTF-8", "UTF-8").trim());
+	}
 }
