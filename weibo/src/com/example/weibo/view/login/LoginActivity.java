@@ -2,13 +2,16 @@ package com.example.weibo.view.login;
 
 import java.text.SimpleDateFormat;
 
-import android.R;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.weibo.dao.login.AccessTokenDao;
+import com.example.weibo.R;
+import com.example.weibo.common.GlobalConstant;
 import com.weibo.sdk.android.Oauth2AccessToken;
 import com.weibo.sdk.android.Weibo;
 import com.weibo.sdk.android.WeiboAuthListener;
@@ -17,28 +20,39 @@ import com.weibo.sdk.android.WeiboException;
 import com.weibo.sdk.android.sso.SsoHandler;
 
 /**
- * 登录Activity 
+ * 登录Activity
+ * 
  * @author fengzhongtian@163.com
  * @version 1.0
  * @since 2013年8月26日
  */
 public class LoginActivity extends Activity {
-	/**Weibo*/
+
+	/** Weibo */
 	private Weibo mWeibo;
 
-	/**Oauth2AccessToken*/
+	private TextView mText;
+
+	/** Oauth2AccessToken */
 	public static Oauth2AccessToken accessToken;
 
-	/**SsoHandler 仅当sdk支持sso时有效，*/
+	/** SsoHandler 仅当sdk支持sso时有效， */
 	private SsoHandler mSsoHandler;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_list_item);
-		mWeibo = Weibo.getInstance(ConstantS.APP_KEY, ConstantS.REDIRECT_URL, ConstantS.SCOPE);
-		accessToken = AccessTokenDao.readAccessToken(this);
-		mWeibo.anthorize(getApplicationContext(), new AuthDialogListener());
+		setContentView(R.layout.login_home);
+		mWeibo = Weibo.getInstance(GlobalConstant.APP_KEY, GlobalConstant.REDIRECT_URL, GlobalConstant.SCOPE);
+		// 触发sso button
+		findViewById(R.id.sso).setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// mSsoHandler = new SsoHandler(LoginActivity.this, mWeibo);
+				// mSsoHandler.authorize(new AuthDialogListener(), null);
+			}
+		});
 
 	}
 
@@ -50,7 +64,7 @@ public class LoginActivity extends Activity {
 			String code = values.getString("code");
 			if (code != null) {
 				mText.setText("取得认证code: \r\n Code: " + code);
-				Toast.makeText(MainActivity.this, "认证code成功", Toast.LENGTH_SHORT).show();
+				Toast.makeText(getApplicationContext(), "认证code成功", Toast.LENGTH_SHORT).show();
 				return;
 			}
 			String token = values.getString("access_token");
@@ -62,8 +76,7 @@ public class LoginActivity extends Activity {
 				mText.setText("认证成功: \r\n access_token: " + token + "\r\n" + "expires_in: " + expires_in + "\r\n有效期："
 						+ date);
 
-				AccessTokenKeeper.keepAccessToken(MainActivity.this, accessToken);
-				Toast.makeText(MainActivity.this, "认证成功", Toast.LENGTH_SHORT).show();
+				Toast.makeText(getApplicationContext(), "认证成功", Toast.LENGTH_SHORT).show();
 			}
 		}
 
