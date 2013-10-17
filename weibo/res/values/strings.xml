@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <string name="app_name">weibo</string>
-    <string name="action_settings">Settings</string>
-    <string name="sso">单点登录</string>
-
+	<string name="app_name">微博客户端</string>
+	<string name="action_settings">Settings</string>
+	<string name="sso">单点登录</string>
 </resources>
