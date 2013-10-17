@@ -1,10 +1,3 @@
-/*******************************************************************************
- * @(#)AbstractReq.java 2013-3-11
- * 
- *                      Copyright 2013 Neusoft Group Ltd. All rights reserved.
- *                      Neusoft PROPRIETARY/CONFIDENTIAL. Use is subject to
- *                      license terms.
- *******************************************************************************/
 package com.example.weibo.connection.packet;
 
 /**
